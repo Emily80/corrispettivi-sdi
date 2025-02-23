@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:datiCorrispettivi xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/corrispettivi/v1.0">
+  <p:IdentificativoDispositivo>1234567890</p:IdentificativoDispositivo>
+  <p:DataOraRilevazione>2025-02-23T10:17:25.641Z</p:DataOraRilevazione>
+  <p:DettaglioLinee>
+    <p:Linea>
+      <p:NumeroLinea>1</p:NumeroLinea>
+      <p:Descrizione>Prodotti Alimentari</p:Descrizione>
+      <p:Quantita>2</p:Quantita>
+      <p:PrezzoUnitario>10.50</p:PrezzoUnitario>
+      <p:AliquotaIVA>10</p:AliquotaIVA>
+      <p:Importo>21.00</p:Importo>
+    </p:Linea>
+  </p:DettaglioLinee>
+  <p:Totale>
+    <p:ImportoTotale>21.00</p:ImportoTotale>
+  </p:Totale>
+</p:datiCorrispettivi>

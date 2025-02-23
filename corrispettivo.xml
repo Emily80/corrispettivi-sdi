@@ -1,0 +1,9 @@
+
+    <?xml version="1.0"?>
+    <Corrispettivo>
+      <Reparto>Alimentari</Reparto>
+      <Prezzo>25.00</Prezzo>
+      <Quantita>2</Quantita>
+      <IVA>10%</IVA>
+    </Corrispettivo>
+  

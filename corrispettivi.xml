@@ -1,0 +1,20 @@
+<Corrispettivi>
+  <Corrispettivi>
+    <Esercente>Negozio Demo</Esercente>
+    <Data>2025-02-23</Data>
+    <Vendite>
+      <Prodotto>
+        <Nome>Prodotto A</Nome>
+        <Quantita>2</Quantita>
+        <PrezzoUnitario>10.5</PrezzoUnitario>
+        <Totale>21.00</Totale>
+      </Prodotto>
+      <Prodotto>
+        <Nome>Prodotto B</Nome>
+        <Quantita>1</Quantita>
+        <PrezzoUnitario>5</PrezzoUnitario>
+        <Totale>5.00</Totale>
+      </Prodotto>
+    </Vendite>
+  </Corrispettivi>
+</Corrispettivi>
