@@ -14,6 +14,11 @@ const port = 3000;
 // Middleware per gestire il body delle richieste in formato JSON
 app.use(bodyParser.json());
 
+// Route per la radice del server
+app.get('/', (req, res) => {
+  res.send('Benvenuto nel server SDI Corrispettivi!');
+});
+
 // Endpoint per ricevere i corrispettivi, generare il file XML conforme e inviarlo tramite SDI
 app.post('/invia-corrispettivi', async (req, res) => {
   try {
