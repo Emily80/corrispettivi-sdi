@@ -55,8 +55,8 @@ app.post('/invia-corrispettivi', async (req, res) => {
       ca: fs.readFileSync(path.resolve(__dirname, 'ca.pem'))      // Certificato dell'autorità di certificazione
     });
 
-    // Simulazione invio del file XML al sistema SDI
-    const sdiResponse = await axios.post('https://sdi.example.com/invio', xml, {
+    // Invio simulato al sistema SDI (modificare con l'URL reale quando disponibile)
+    const sdiResponse = await axios.post('https://test.sdi.gov.it/invio', xml, {
       httpsAgent,
       headers: {
         'Content-Type': 'application/xml'
@@ -68,9 +68,9 @@ app.post('/invia-corrispettivi', async (req, res) => {
     // Risposta positiva al client
     res.status(200).send({ messaggio: 'Corrispettivi inviati con successo allo SDI.', risposta: sdiResponse.data });
   } catch (error) {
-    console.error(`Errore durante l'invio dei corrispettivi allo SDI:`, error);
-    // Risposta di errore al client
-    res.status(500).send({ errore: "Errore durante l'invio dei corrispettivi allo SDI." });
+    console.error(`Errore durante l'invio dei corrispettivi allo SDI:`, error.message);
+    // Risposta di errore al client con dettagli
+    res.status(500).send({ errore: `Errore durante l'invio dei corrispettivi allo SDI: ${error.message}` });
   }
 });
 
@@ -91,3 +91,4 @@ app.post('/ricevi-notifica', (req, res) => {
 app.listen(port, () => {
   console.log(`Server REST in ascolto su http://localhost:${port}`);
 });
+
