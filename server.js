@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const https = require('https');
 const axios = require('axios');
 const path = require('path');
 
@@ -19,7 +18,7 @@ app.get('/', (req, res) => {
   res.send('Benvenuto nel server SDI Corrispettivi!');
 });
 
-// Endpoint per ricevere i corrispettivi, generare il file XML conforme e inviarlo tramite SDI
+// Endpoint per ricevere i corrispettivi, generare il file XML conforme e simularne l'invio
 app.post('/invia-corrispettivi', async (req, res) => {
   try {
     const dati = req.body; // Ricezione dei dati dal client
@@ -48,29 +47,15 @@ app.post('/invia-corrispettivi', async (req, res) => {
     const filePath = './corrispettivi.xml';
     fs.writeFileSync(filePath, xml);
 
-    // Configurazione della richiesta HTTPS con certificati digitali (placeholder)
-    const httpsAgent = new https.Agent({
-      cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')), // Certificato client
-      key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),   // Chiave privata
-      ca: fs.readFileSync(path.resolve(__dirname, 'ca.pem'))      // Certificato dell'autorità di certificazione
-    });
+    // Simulazione invio senza certificati
+    console.log('Simulazione invio al sistema SDI con il seguente XML:\n', xml);
 
-    // Invio simulato al sistema SDI (modificare con l'URL reale quando disponibile)
-    const sdiResponse = await axios.post('https://test.sdi.gov.it/invio', xml, {
-      httpsAgent,
-      headers: {
-        'Content-Type': 'application/xml'
-      }
-    });
-
-    console.log('Risposta SDI:', sdiResponse.data);
-
-    // Risposta positiva al client
-    res.status(200).send({ messaggio: 'Corrispettivi inviati con successo allo SDI.', risposta: sdiResponse.data });
+    // Simula una risposta di successo
+    res.status(200).send({ messaggio: 'Simulazione completata con successo. Corrispettivi inviati.', risposta: xml });
   } catch (error) {
-    console.error(`Errore durante l'invio dei corrispettivi allo SDI:`, error.message);
+    console.error(`Errore durante l'invio simulato dei corrispettivi:`, error.message);
     // Risposta di errore al client con dettagli
-    res.status(500).send({ errore: `Errore durante l'invio dei corrispettivi allo SDI: ${error.message}` });
+    res.status(500).send({ errore: `Errore durante l'invio simulato dei corrispettivi: ${error.message}` });
   }
 });
 
@@ -91,4 +76,3 @@ app.post('/ricevi-notifica', (req, res) => {
 app.listen(port, () => {
   console.log(`Server REST in ascolto su http://localhost:${port}`);
 });
-
